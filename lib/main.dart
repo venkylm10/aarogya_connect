@@ -1,26 +1,29 @@
-import 'package:aarogya_connect/login.dart';
+import 'package:aarogya_connect/globals/colors.dart';
+import 'package:aarogya_connect/pages/login.dart';
+import 'package:aarogya_connect/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
+import 'package:flutter/services.dart';
+
 void main() {
-  runApp( MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    systemNavigationBarColor: MyColors.whiteColor,
+  ));
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  runApp( const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Aarogya Connect',
       theme: ThemeData.light(),
-      home: LoginScreen(),
-      
+      home: const LoginScreen(),
     );
   }
 }
