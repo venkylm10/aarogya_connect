@@ -10,7 +10,7 @@ class MyStyles {
   );
   static var subHeadingStyle = GoogleFonts.nunitoSans(
     fontSize: 18,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.bold,
     color: MyColors.blackColor,
   );
   static var bodyTextStyle = GoogleFonts.nunitoSans(
