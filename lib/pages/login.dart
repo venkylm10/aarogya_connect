@@ -14,9 +14,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Container(
-        padding: EdgeInsets.all(40),
+        padding: const EdgeInsets.all(40),
         decoration: BoxDecoration(
             color: Colors.greenAccent,
             gradient: LinearGradient(
@@ -29,13 +28,22 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               margin: EdgeInsets.only(top: 40),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                Image.asset(AssetConstants.appLogo,fit: BoxFit.cover,width: 60,height: 60,),
-                Image.asset(AssetConstants.appName,fit: BoxFit.contain,width: 200,height: 60,),
-              ]),
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      AssetConstants.appLogo,
+                      fit: BoxFit.cover,
+                      width: 60,
+                      height: 60,
+                    ),
+                    Image.asset(
+                      AssetConstants.appName,
+                      fit: BoxFit.contain,
+                      width: 200,
+                      height: 60,
+                    ),
+                  ]),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Row(
@@ -49,9 +57,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 10),),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+            ),
             Container(
-              
               height: 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -60,49 +69,57 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left:10.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: Text(
                       "+91",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                   ),
-                   SizedBox(width: 5,),
+                  SizedBox(
+                    width: 5,
+                  ),
                   Container(
                     margin: EdgeInsets.all(5),
                     color: Colors.grey,
                     width: 1.5,
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Expanded(
                     child: TextField(
-                        decoration: new InputDecoration.collapsed(
-                          hintText: '00000 00000'
-                        ),
-                         keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
-              ],
-                      ),
+                      decoration: new InputDecoration.collapsed(
+                          hintText: '00000 00000'),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
-            Padding( padding: EdgeInsets.only(top: 20),),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+            ),
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeScreen()));
               },
               child: Container(
-               
                 width: 500,
                 height: 60,
                 decoration: BoxDecoration(
                   color: Colors.greenAccent[400],
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                child: Center(child: Text("Login or Sign Up",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)),
+                child: Center(
+                    child: Text(
+                  "Login or Sign Up",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                )),
               ),
             )
           ],

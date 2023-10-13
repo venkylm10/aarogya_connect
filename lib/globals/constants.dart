@@ -8,7 +8,8 @@ class AssetConstants {
   static const complaints = 'assets/images/icons/complaints.png';
   static const video = 'assets/images/icons/video.png';
   static const womenHealth = 'assets/images/icons/women_health.png';
-  static const volunteer = 'assets/images/icons/volunterr.png';
+  static const volunteer = 'assets/images/icons/volunteer.png';
   static const buyMedicine = 'assets/images/icons/buy_medicine.png';
   static const contactUs = 'assets/images/icons/contact_us.png';
+  static const logout = 'assets/images/icons/logout.png';
 }
