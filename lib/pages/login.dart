@@ -1,4 +1,4 @@
-import 'package:aarogya_connect/services/MapScreen.dart';
+import 'package:aarogya_connect/services/Map/MapScreen.dart';
 import 'package:aarogya_connect/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:aarogya_connect/globals/constants.dart';

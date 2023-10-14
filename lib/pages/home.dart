@@ -1,13 +1,17 @@
 import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
+import 'package:aarogya_connect/services/Map/MapScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+  
+  
 
   @override
   Widget build(BuildContext context) {
+   
     return Scaffold(
       backgroundColor: MyColors.whiteColor,
       appBar: AppBar(
@@ -107,7 +111,9 @@ class HomeScreen extends StatelessWidget {
   Widget buildHomeTile(
       {required String iconPath, required String title, VoidCallback? onTap}) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         decoration: BoxDecoration(
