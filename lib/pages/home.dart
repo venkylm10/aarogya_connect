@@ -1,11 +1,16 @@
 import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
+import 'package:aarogya_connect/main.dart';
+import 'package:aarogya_connect/pages/complaints.dart';
+import 'package:aarogya_connect/pages/donate.dart';
+import 'package:aarogya_connect/pages/survey.dart';
 import 'package:aarogya_connect/services/Map/BalancedDiet.dart';
 import 'package:aarogya_connect/services/Map/MapScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const id = "/home";
   const HomeScreen({super.key});
 
   @override
@@ -84,11 +89,31 @@ class HomeScreen extends StatelessWidget {
 
   Widget buildHomeTileGrid(BuildContext context) {
     List<Map<String, String>> tiles = [
-      {"icon_path": AssetConstants.location, "title": "/ नजदिकी अस्पताल"},
-      {"icon_path": AssetConstants.diet, "title": "balanced Diet"},
-      {"icon_path": AssetConstants.survey, "title": "Quick Survey"},
-      {"icon_path": AssetConstants.donate, "title": "Donate NGOs"},
-      {"icon_path": AssetConstants.complaints, "title": "Complaints"},
+      {
+        "icon_path": AssetConstants.location,
+        "title": "Nearby Hospitals",
+        "navigation_path": HospitalsScreen.id
+      },
+      {
+        "icon_path": AssetConstants.diet,
+        "title": "balanced Diet",
+        "navigation_path": BalancedDiet.id
+      },
+      {
+        "icon_path": AssetConstants.survey,
+        "title": "Quick Survey",
+        "navigation_path": SurveyScreen.id
+      },
+      {
+        "icon_path": AssetConstants.donate,
+        "title": "Donate NGOs",
+        "navigation_path": DonateScreen.id
+      },
+      {
+        "icon_path": AssetConstants.complaints,
+        "title": "Complaints",
+        "navigation_path": ComplaintScreen.id
+      },
     ];
     return GridView.count(
       crossAxisCount: 2,
@@ -101,8 +126,7 @@ class HomeScreen extends StatelessWidget {
         (index) => buildHomeTile(
           iconPath: tiles[index]['icon_path']!,
           title: tiles[index]['title']!,
-          
-          index: index,
+          navigationPath: tiles[index]['navigation_path'],
         ),
       ),
     );
@@ -111,24 +135,24 @@ class HomeScreen extends StatelessWidget {
   Widget buildHomeTile({
     required String iconPath,
     required String title,
-    
-    required index,
-    VoidCallback? onTap,
+    required String? navigationPath,
   }) {
     return GestureDetector(
       onTap: () {
-       
-        
+        if (navigationPath != null) {
+          navigatorKey.currentState!.pushNamed(navigationPath);
+        }
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           color: MyColors.homeTileColor,
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           border: Border.all(color: MyColors.orangeColor),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               iconPath,

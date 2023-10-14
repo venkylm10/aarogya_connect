@@ -1,8 +1,10 @@
 import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/pages/login.dart';
-import 'package:aarogya_connect/pages/home.dart';
+import 'package:aarogya_connect/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+var navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +13,7 @@ void main() {
     systemNavigationBarColor: MyColors.whiteColor,
   ));
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  runApp( const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,10 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Aarogya Connect',
       theme: ThemeData.light(),
-      home: const LoginScreen(),
+      initialRoute: LoginScreen.id,
+      routes: routes,
     );
   }
 }
