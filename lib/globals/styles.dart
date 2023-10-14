@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyStyles {
-  static var headingStyle = GoogleFonts.nunitoSans(
+  static var headingStyle = GoogleFonts.poppins(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: MyColors.blackColor,
   );
-  static var subHeadingStyle = GoogleFonts.nunitoSans(
+  static var subHeadingStyle = GoogleFonts.poppins(
     fontSize: 18,
     fontWeight: FontWeight.bold,
     color: MyColors.blackColor,
   );
-  static var bodyTextStyle = GoogleFonts.nunitoSans(
+  static var bodyTextStyle = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.normal,
     color: MyColors.blackColor,
