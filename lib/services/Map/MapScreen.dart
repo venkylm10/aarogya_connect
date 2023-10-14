@@ -1,5 +1,6 @@
 import 'dart:async';
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -14,8 +15,6 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   late Future<Position> userPosition;
   Completer<GoogleMapController> _controller = Completer();
-
-  
 
   List<Marker> _marker = [];
   List<Marker> _list = [
@@ -35,12 +34,54 @@ class _MapScreenState extends State<MapScreen> {
     return await Geolocator.getCurrentPosition();
   }
 
-@override
+  @override
   void initState() {
     super.initState();
-    userPosition = getUserCurrentLocation(); 
+    userPosition = getUserCurrentLocation();
   }
-  
+
+  List<dynamic> hospital = [];
+
+  Future<void> fetchNearbyHospitals() async {
+    final apiKey = 'AIzaSyCQwySKvMSJPfdTtzISoS2qCRLEEvA5lUM';
+    final userLocation = await getUserCurrentLocation();
+    final latitude = userLocation.latitude;
+    final longitude = userLocation.longitude;
+    final radius = 10000;
+
+    final response = await http.get(Uri.parse(
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$latitude,$longitude&radius=$radius&type=hospital&key=$apiKey'));
+
+    if (response.statusCode == 200) {
+      // Parse the JSON response
+      final Map<String, dynamic> data = json.decode(response.body);
+
+      // Check if the response has the expected structure
+      if (data['status'] == 'OK') {
+        // Access the list of results (places)
+        final List<dynamic> results = data['results'];
+        hospital = results;
+        print("Hospital lenght is :${hospital.length}");
+        // var index = 0;
+        // Now you can iterate through the list and access properties of each place
+        for (final result in results) {
+          final String name = result['name'];
+          final double placeLatitude = result['geometry']['location']['lat'];
+          final double placeLongitude = result['geometry']['location']['lng'];
+          // hospital.insert(index, name);
+          // index++;
+          // You can use this data to create markers on the map, for example
+          // or display information about each place.
+        }
+      } else {
+        print("Hospital lenght is :${hospital.length}");
+        // Handle API error or no results found
+      }
+    } else {
+      // Handle errors and network issues here
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,55 +98,72 @@ class _MapScreenState extends State<MapScreen> {
         elevation: 0,
         backgroundColor: Colors.lightGreen[200],
       ),
-
       body: Column(
         children: [
           Container(
             height: 400,
             margin: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              // borderRadius: BorderRadius.all(Radius.circular(20)),
-               boxShadow: [
-                BoxShadow(
-                  color: Colors.green,
-                  spreadRadius: 2.0,
-                  blurRadius: 2.0,
-                  
-                )
-               ]
-            ),
+                color: Colors.white,
+                // borderRadius: BorderRadius.all(Radius.circular(20)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.green,
+                    spreadRadius: 2.0,
+                    blurRadius: 2.0,
+                  )
+                ]),
             child: FutureBuilder<Position>(
-              future: userPosition,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else if (snapshot.data == null) { 
-                  return Text('User position is not available');
-                } else {
-                  final position = snapshot.data; 
-                  return GoogleMap(
-                    initialCameraPosition: CameraPosition(
-                      target: LatLng(position!.latitude, position.longitude),
-                      zoom: 12 
-                    ),
-                    markers: Set<Marker>.of(_marker),
-                    mapType: MapType.normal,
-                    myLocationEnabled: true,
-                    compassEnabled: true,
-                    onMapCreated: (GoogleMapController controller) {
-                      _controller.complete(controller);
-                    },
-                  );
-                }
-              }
-            
-            ),
+                future: userPosition,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else if (snapshot.data == null) {
+                    return Text('User position is not available');
+                  } else {
+                    final position = snapshot.data;
+                    return GoogleMap(
+                      initialCameraPosition: CameraPosition(
+                          target:
+                              LatLng(position!.latitude, position.longitude),
+                          zoom: 12),
+                      markers: Set<Marker>.of(_marker),
+                      mapType: MapType.normal,
+                      myLocationEnabled: true,
+                      compassEnabled: true,
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller.complete(controller);
+                      },
+                    );
+                  }
+                }),
           ),
+          // Container(
+          //   child: Text("${hospital.length}"),
+          // ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(20),
+              child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+
+                      ),
+                      padding: EdgeInsets.only(top: 20),
+                      child: ListTile(
+                        tileColor: Colors.blue[100],
+                        title: Text("Hospital : ${index+1}"),
+                      ),
+                    );
+                  }),
+            ),
+          )
         ],
       ),
-      
     );
   }
 }

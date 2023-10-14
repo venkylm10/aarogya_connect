@@ -6,12 +6,9 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-  
-  
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       backgroundColor: MyColors.whiteColor,
       appBar: AppBar(
@@ -77,14 +74,14 @@ class HomeScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             const SizedBox(height: 30),
-            buildHomeTileGrid(),
+            buildHomeTileGrid(context),
           ],
         ),
       ),
     );
   }
 
-  Widget buildHomeTileGrid() {
+  Widget buildHomeTileGrid(BuildContext context) {
     List<Map<String, String>> tiles = [
       {"icon_path": AssetConstants.location, "title": "Nearby Hospitals"},
       {"icon_path": AssetConstants.diet, "title": "balanced Diet"},
@@ -103,16 +100,27 @@ class HomeScreen extends StatelessWidget {
         (index) => buildHomeTile(
           iconPath: tiles[index]['icon_path']!,
           title: tiles[index]['title']!,
+          context: context,
+          index: index,
         ),
       ),
     );
   }
 
-  Widget buildHomeTile(
-      {required String iconPath, required String title, VoidCallback? onTap}) {
+  Widget buildHomeTile({
+    required String iconPath,
+    required String title,
+    required context,
+    required index,
+    VoidCallback? onTap,
+  }) {
     return GestureDetector(
       onTap: () {
-        
+        if (index == 0) {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => MapScreen()),
+          );
+        }
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
