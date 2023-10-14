@@ -6,6 +6,25 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  Widget features(Icon i, String s) {
+    return GestureDetector(
+      child: Container(
+        height: 40,
+        // width: 100,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            child: Row(children: [
+              i,
+              Expanded(child: SizedBox()),
+              Text(s,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 15),)
+            ]),
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +64,13 @@ class HomeScreen extends StatelessWidget {
               MyColors.whiteColor,
             ],
           ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Venkatesh M"),
+            features(Icon(Icons.map),"Map" ),
+          ],
         ),
       ),
     );
