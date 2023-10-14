@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                   style: MyStyles.headingStyle,
                 ),
                 Text(
-                  "Vineet",
+                  "Venkatesh M ",
                   style: MyStyles.headingStyle.copyWith(
                     color: MyColors.orangeColor,
                   ),
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget buildHomeTileGrid(BuildContext context) {
     List<Map<String, String>> tiles = [
-      {"icon_path": AssetConstants.location, "title": "Nearby Hospitals"},
+      {"icon_path": AssetConstants.location, "title": "/ नजदिकी अस्पताल"},
       {"icon_path": AssetConstants.diet, "title": "balanced Diet"},
       {"icon_path": AssetConstants.survey, "title": "Quick Survey"},
       {"icon_path": AssetConstants.donate, "title": "Donate NGOs"},
@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
         (index) => buildHomeTile(
           iconPath: tiles[index]['icon_path']!,
           title: tiles[index]['title']!,
-          context: context,
+          
           index: index,
         ),
       ),
@@ -111,25 +111,13 @@ class HomeScreen extends StatelessWidget {
   Widget buildHomeTile({
     required String iconPath,
     required String title,
-    required context,
+    
     required index,
     VoidCallback? onTap,
   }) {
     return GestureDetector(
       onTap: () {
-        switch (index) {
-          case 0:
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => MapScreen()),
-            );
-            break;
-           case 1:
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => BalancedDiet()),
-            );
-            break;  
-
-        }
+       
         
       },
       child: Container(
