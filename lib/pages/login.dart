@@ -1,10 +1,10 @@
-import 'package:aarogya_connect/services/Map/MapScreen.dart';
 import 'package:aarogya_connect/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:flutter/services.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const id = "/login";
   const LoginScreen({super.key});
 
   @override
@@ -17,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(40),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: Colors.greenAccent,
             gradient: LinearGradient(
               colors: [Colors.greenAccent, Colors.white],
@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 40),
+              margin: const EdgeInsets.only(top: 40),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -45,8 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ]),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 20),
               child: Row(
                 children: [
                   Text(
@@ -58,39 +58,39 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 10),
             ),
             Container(
               height: 60,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Colors.white,
               ),
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10.0),
                     child: Text(
                       "+91",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Container(
-                    margin: EdgeInsets.all(5),
+                    margin: const EdgeInsets.all(5),
                     color: Colors.grey,
                     width: 1.5,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
                     child: TextField(
-                      decoration: new InputDecoration.collapsed(
+                      decoration: const InputDecoration.collapsed(
                           hintText: '00000 00000'),
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
@@ -101,22 +101,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 20),
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));
               },
               child: Container(
                 width: 500,
                 height: 60,
                 decoration: BoxDecoration(
                   color: Colors.greenAccent[400],
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
                 ),
-                child: Center(
+                child: const Center(
                     child: Text(
                   "Login or Sign Up",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),

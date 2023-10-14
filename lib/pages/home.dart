@@ -6,6 +6,7 @@ import 'package:aarogya_connect/services/Map/MapScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const id = "/home";
   const HomeScreen({super.key});
 
   @override
