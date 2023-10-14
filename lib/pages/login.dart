@@ -1,3 +1,4 @@
+import 'package:aarogya_connect/services/MapScreen.dart';
 import 'package:aarogya_connect/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:aarogya_connect/globals/constants.dart';
@@ -106,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                    MaterialPageRoute(builder: (context) => MapScreen()));
               },
               child: Container(
                 width: 500,
