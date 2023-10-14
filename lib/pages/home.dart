@@ -124,10 +124,10 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
             margin: const EdgeInsets.only(bottom: 30),
             decoration: BoxDecoration(
-              color: MyColors.greenColor,
+              color: MyColors.greenGradient,
               borderRadius: BorderRadius.circular(18),
             ),
             child: Column(
@@ -167,12 +167,10 @@ class HomeScreen extends StatelessWidget {
       child: Container(
         height: 50,
         margin: const EdgeInsets.only(top: 30),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: MyColors.orangeGradient,
-          border: Border.symmetric(
-            horizontal: BorderSide(
-              color: MyColors.orangeColor,
-            ),
+          border: Border.all(
+            color: MyColors.orangeColor,
           ),
         ),
         child: Row(
@@ -180,7 +178,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             const SizedBox(width: 20),
             Image.asset(iconPath, height: 40),
-            const SizedBox(width: 5),
+            const SizedBox(width: 10),
             Text(
               title,
               style: MyStyles.subHeadingStyle,
