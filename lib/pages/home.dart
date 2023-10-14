@@ -1,6 +1,7 @@
 import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
+import 'package:aarogya_connect/services/Map/BalancedDiet.dart';
 import 'package:aarogya_connect/services/Map/MapScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -116,11 +117,20 @@ class HomeScreen extends StatelessWidget {
   }) {
     return GestureDetector(
       onTap: () {
-        if (index == 0) {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => MapScreen()),
-          );
+        switch (index) {
+          case 0:
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => MapScreen()),
+            );
+            break;
+           case 1:
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => BalancedDiet()),
+            );
+            break;  
+
         }
+        
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
