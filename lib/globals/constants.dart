@@ -1,6 +1,7 @@
 class AssetConstants {
   static const appLogo = 'assets/logo/app_logo.png';
   static const appName = 'assets/logo/app_name.png';
+  static const pmJayBanner = 'assets/banners/pm_jay.png';
   static const location = 'assets/images/icons/location.png';
   static const diet = 'assets/images/icons/diet.png';
   static const survey = 'assets/images/icons/survey.png';
