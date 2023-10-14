@@ -21,7 +21,7 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
 
   List<Marker> _marker = [];
   List<Marker> _list = [
-    Marker(
+    const Marker(
         markerId: MarkerId('1'),
         position: LatLng(26.144518, 91.736237),
         infoWindow: InfoWindow(title: "My Position"))
@@ -95,7 +95,7 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             )),
@@ -107,10 +107,10 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
               fit: BoxFit.contain,
               height: 25,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
-            Text(
+            const Text(
               "Nearby Hospitals",
               style: TextStyle(
                 color: Colors.black,
@@ -125,72 +125,74 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
         backgroundColor: MyColors.greenColor,
       ),
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [MyColors.greenColor, MyColors.whiteColor],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter)),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [MyColors.greenColor, MyColors.whiteColor],
+          ),
+        ),
         child: Column(
           children: [
             Container(
               height: 400,
-              margin: EdgeInsets.only(top: 20, right: 20, left: 20),
+              margin: const EdgeInsets.only(top: 20, right: 20, left: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                // borderRadius: BorderRadius.all(Radius.circular(20)),
-                // boxShadow: [
-                //   BoxShadow(
-                //    color: MyColors.orangeColor,
-                //     spreadRadius: 1.5,
-                //     // blurRadius: 1.0,
-                //   )
-                // ]
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                border: Border.all(color: MyColors.greyColor, width: 1.5),
               ),
-              child: FutureBuilder<Position>(
-                  future: userPosition,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else if (snapshot.data == null) {
-                      return Text('User position is not available');
-                    } else {
-                      final position = snapshot.data;
-                      return GoogleMap(
-                        initialCameraPosition: CameraPosition(
-                            target:
-                                LatLng(position!.latitude, position.longitude),
-                            zoom: 12),
-                        markers: Set<Marker>.of(_marker),
-                        mapType: MapType.normal,
-                        myLocationEnabled: true,
-                        compassEnabled: true,
-                        onMapCreated: (GoogleMapController controller) {
-                          _controller.complete(controller);
-                        },
-                      );
-                    }
-                  }),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                child: FutureBuilder<Position>(
+                    future: userPosition,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.data == null) {
+                        return const Text('User position is not available');
+                      } else {
+                        final position = snapshot.data;
+                        return GoogleMap(
+                          initialCameraPosition: CameraPosition(
+                              target: LatLng(
+                                  position!.latitude, position.longitude),
+                              zoom: 12),
+                          markers: Set<Marker>.of(_marker),
+                          mapType: MapType.normal,
+                          myLocationEnabled: true,
+                          compassEnabled: true,
+                          onMapCreated: (GoogleMapController controller) {
+                            _controller.complete(controller);
+                          },
+                        );
+                      }
+                    }),
+              ),
             ),
             // Container(
             //   child: Text("${hospital.length}"),
             // ),
             Expanded(
               child: Container(
-                margin: EdgeInsets.all(20),
+                color: Colors.transparent,
+                margin: const EdgeInsets.all(20),
                 child: ListView.builder(
                     itemCount: 10,
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Container(
                         decoration: BoxDecoration(
                           color: MyColors.homeTileColor,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
                           border: Border.all(
                             color: MyColors.orangeColor,
                           ),
                         ),
-                        margin: EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20),
                         child: ListTile(
                           tileColor: Colors.blue[100],
                           title: Text("Hospital : ${index + 1}"),
