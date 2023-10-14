@@ -2,6 +2,7 @@ import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
 import 'package:aarogya_connect/utils/back_button.dart';
+import 'package:aarogya_connect/widgets/global/custom_button.dart';
 import 'package:aarogya_connect/widgets/global/custom_drop_down.dart';
 import 'package:aarogya_connect/widgets/global/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -97,21 +98,9 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
           phoneNumberController.text,
           descriptionController.text,
         ),
-        child: Container(
-          height: 60,
+        child: CustomButton(
+          label: "Submit",
           margin: const EdgeInsets.all(20).copyWith(bottom: 30),
-          decoration: BoxDecoration(
-            color: MyColors.orangeColor,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Center(
-            child: Text(
-              "Submit",
-              style: MyStyles.subHeadingStyle.copyWith(
-                color: MyColors.whiteColor,
-              ),
-            ),
-          ),
         ),
       ),
     );

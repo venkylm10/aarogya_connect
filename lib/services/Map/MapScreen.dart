@@ -7,14 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
+class HospitalsScreen extends StatefulWidget {
+  static const id = "/home/nearby_hospitals";
+  const HospitalsScreen({super.key});
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
+  State<HospitalsScreen> createState() => _HospitalsScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _HospitalsScreenState extends State<HospitalsScreen> {
   late Future<Position> userPosition;
   Completer<GoogleMapController> _controller = Completer();
 

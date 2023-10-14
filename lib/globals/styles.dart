@@ -10,12 +10,17 @@ class MyStyles {
   );
   static var subHeadingStyle = GoogleFonts.poppins(
     fontSize: 18,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     color: MyColors.blackColor,
   );
   static var bodyTextStyle = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.normal,
     color: MyColors.blackColor,
+  );
+  static var lightTextStyle = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.normal,
+    color: MyColors.lightColor,
   );
 }
