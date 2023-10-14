@@ -13,4 +13,8 @@ class AssetConstants {
   static const buyMedicine = 'assets/images/icons/buy_medicine.png';
   static const contactUs = 'assets/images/icons/contact_us.png';
   static const logout = 'assets/images/icons/logout.png';
+  static const baby = 'assets/images/icons/baby.png';
+  static const teenage = 'assets/images/icons/teenage.png';
+  static const adult = 'assets/images/icons/adult.png';
+  static const old = 'assets/images/icons/old.png';
 }

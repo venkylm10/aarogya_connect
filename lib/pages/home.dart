@@ -75,14 +75,14 @@ class HomeScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             const SizedBox(height: 30),
-            buildHomeTileGrid(context),
+            buildHomeTileGrid(),
           ],
         ),
       ),
     );
   }
 
-  Widget buildHomeTileGrid(BuildContext context) {
+  Widget buildHomeTileGrid() {
     List<Map<String, String>> tiles = [
       {"icon_path": AssetConstants.location, "title": "/ नजदिकी अस्पताल"},
       {"icon_path": AssetConstants.diet, "title": "balanced Diet"},
