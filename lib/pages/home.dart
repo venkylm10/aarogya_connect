@@ -6,25 +6,6 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  Widget features(Icon i, String s) {
-    return GestureDetector(
-      child: Container(
-        height: 40,
-        // width: 100,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Row(children: [
-              i,
-              Expanded(child: SizedBox()),
-              Text(s,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 15),)
-            ]),
-      ),
-    );
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +26,7 @@ class HomeScreen extends StatelessWidget {
             Image.asset(
               AssetConstants.appName,
               height: 12,
+              fit: BoxFit.cover,
             ),
           ],
         ),
@@ -55,6 +37,7 @@ class HomeScreen extends StatelessWidget {
       ),
       drawer: buildDrawer(),
       body: Container(
+        padding: const EdgeInsets.all(20).copyWith(bottom: 0),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -68,8 +51,91 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Venkatesh M"),
-            features(Icon(Icons.map),"Map" ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text(
+                  "Welcome ",
+                  style: MyStyles.headingStyle,
+                ),
+                Text(
+                  "Vineet",
+                  style: MyStyles.headingStyle.copyWith(
+                    color: MyColors.orangeColor,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Image.asset(
+              AssetConstants.pmJayBanner,
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 30),
+            buildHomeTileGrid(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildHomeTileGrid() {
+    List<Map<String, String>> tiles = [
+      {"icon_path": AssetConstants.location, "title": "Nearby Hospitals"},
+      {"icon_path": AssetConstants.diet, "title": "balanced Diet"},
+      {"icon_path": AssetConstants.survey, "title": "Quick Survey"},
+      {"icon_path": AssetConstants.donate, "title": "Donate NGOs"},
+      {"icon_path": AssetConstants.complaints, "title": "Complaints"},
+    ];
+    return GridView.count(
+      crossAxisCount: 2,
+      childAspectRatio: 2 / 1,
+      shrinkWrap: true,
+      crossAxisSpacing: 20,
+      mainAxisSpacing: 20,
+      children: List.generate(
+        5,
+        (index) => buildHomeTile(
+          iconPath: tiles[index]['icon_path']!,
+          title: tiles[index]['title']!,
+        ),
+      ),
+    );
+  }
+
+  Widget buildHomeTile(
+      {required String iconPath, required String title, VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        decoration: BoxDecoration(
+          color: MyColors.homeTileColor,
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          border: Border.all(color: MyColors.orangeColor),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(
+              iconPath,
+              height: 30,
+            ),
+            const SizedBox(width: 5),
+            Expanded(
+              child: Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                softWrap: true,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+            )
           ],
         ),
       ),
@@ -108,6 +174,7 @@ class HomeScreen extends StatelessWidget {
                   Image.asset(
                     AssetConstants.appName,
                     height: 12,
+                    fit: BoxFit.cover,
                   ),
                 ],
               ),

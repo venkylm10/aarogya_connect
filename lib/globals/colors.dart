@@ -8,4 +8,5 @@ class MyColors {
   static const orangeGradient = Color.fromRGBO(253, 156, 112, 0.37);
   static const greenColor = Color.fromRGBO(55, 234, 170, 1);
   static const greenGradient = Color.fromRGBO(55, 234, 170, 0.1);
+  static const homeTileColor = Color(0xffFEF8EA);
 }
