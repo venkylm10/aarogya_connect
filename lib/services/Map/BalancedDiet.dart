@@ -4,6 +4,7 @@ import 'package:aarogya_connect/services/DietDescription.dart';
 import 'package:flutter/material.dart';
 
 class BalancedDiet extends StatelessWidget {
+  static const id = "/home/balanced_diet";
   const BalancedDiet({super.key});
 
   Widget balancedDiet(String title, String logo) {
@@ -119,3 +120,4 @@ class BalancedDiet extends StatelessWidget {
     );
   }
 }
+
