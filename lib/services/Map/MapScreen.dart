@@ -161,7 +161,7 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                         initialCameraPosition: CameraPosition(
                             target:
                                 LatLng(position!.latitude, position.longitude),
-                            zoom: 12),
+                            zoom: 18),
                         markers: Set<Marker>.of(_marker),
                         mapType: MapType.normal,
                         myLocationEnabled: true,
@@ -173,9 +173,7 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                     }
                   }),
             ),
-            // Container(
-            //   child: Text("${hospital.length}"),
-            // ),
+            
             Expanded(
               child: Container(
                 margin: EdgeInsets.all(20),

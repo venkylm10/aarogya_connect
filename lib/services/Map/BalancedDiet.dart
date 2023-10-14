@@ -29,7 +29,7 @@ class BalancedDiet extends StatelessWidget {
           SizedBox(
             width: 20,
           ),
-          Text(title),
+          Text(title,style: TextStyle(fontSize: 15),),
         ]),
       ),
     );
@@ -75,7 +75,7 @@ class BalancedDiet extends StatelessWidget {
         backgroundColor: MyColors.greenColor,
       ),
       body: Container(
-        padding: const EdgeInsets.all(40).copyWith(bottom: 0),
+        padding: const EdgeInsets.all(20).copyWith(bottom: 0),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,

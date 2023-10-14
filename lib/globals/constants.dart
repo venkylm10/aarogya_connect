@@ -17,4 +17,6 @@ class AssetConstants {
   static const teenage = 'assets/images/icons/teenage.png';
   static const adult = 'assets/images/icons/adult.png';
   static const old = 'assets/images/icons/old.png';
+  static const gPay = 'assets/images/icons/gPay.png';
+  static const paypal = 'assets/images/icons/paypal.png';
 }

@@ -214,7 +214,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 20),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: tiles
