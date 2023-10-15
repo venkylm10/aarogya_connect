@@ -1,6 +1,7 @@
 import 'package:aarogya_connect/pages/buy_medicine/buy_medicine.dart';
 import 'package:aarogya_connect/pages/complaints.dart';
 import 'package:aarogya_connect/pages/contact_us/contact_us.dart';
+import 'package:aarogya_connect/pages/diseases.dart';
 import 'package:aarogya_connect/pages/donate.dart';
 import 'package:aarogya_connect/pages/health_video/health_video.dart';
 import 'package:aarogya_connect/pages/home/home.dart';
@@ -25,7 +26,8 @@ final routes = {
   WomenHealthScreen.id: (context) => const WomenHealthScreen(),
   VolunteerScreen.id: (context) => const VolunteerScreen(),
   BuyMedicineScreen.id: (context) => BuyMedicineScreen(),
-  ContactUsScreen.id: (context) =>  ContactUsScreen(),
+  ContactUsScreen.id: (context) => ContactUsScreen(),
   DietDescription.id: (context) => const DietDescription(),
   WelcomeScreen.id: (context) => const WelcomeScreen(),
+  DiseasesScreen.id: (context) => const DiseasesScreen(),
 };

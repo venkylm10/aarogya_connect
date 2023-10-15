@@ -78,16 +78,18 @@ class BuyMedicineScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: MyColors.homeTileColor,
           borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: MyColors.orangeColor,
+          ),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
               iconPath,
               height: 50,
-              width: 100,
+              width: 80,
             ),
-            const SizedBox(width: 30),
             Text(
               name,
               maxLines: 1,

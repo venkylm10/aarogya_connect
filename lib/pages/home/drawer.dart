@@ -129,9 +129,13 @@ class HomeDrawer extends StatelessWidget {
 
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
+      barrierColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return ContactUsScreen();
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: ContactUsScreen(),
+        );
       },
     );
   }
@@ -145,6 +149,7 @@ class HomeDrawer extends StatelessWidget {
       onTap: () {
         if (navigatePath == '') {
           _showBottomSheet(context);
+          return;
         }
         if (navigatePath == LoginScreen.id) {
           navigatorKey.currentState!.popUntil((route) => route.isFirst);

@@ -12,10 +12,10 @@ class DonateScreen extends StatelessWidget {
       height: 60,
       padding: const EdgeInsets.only(right: 60, left: 50),
       margin: const EdgeInsets.symmetric(vertical: 15),
-      decoration: const BoxDecoration(
-        color: MyColors.homeTileColor,
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-      ),
+      decoration: BoxDecoration(
+          color: MyColors.homeTileColor,
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          border: Border.all(color: MyColors.orangeColor)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

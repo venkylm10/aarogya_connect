@@ -3,6 +3,7 @@ import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
 import 'package:aarogya_connect/main.dart';
 import 'package:aarogya_connect/pages/buy_medicine/buy_medicine.dart';
+import 'package:aarogya_connect/pages/diseases.dart';
 import 'package:aarogya_connect/pages/health_video/health_video.dart';
 import 'package:aarogya_connect/pages/home/drawer.dart';
 import 'package:aarogya_connect/pages/women_health/women_health.dart';
@@ -102,6 +103,11 @@ class HomeScreen extends StatelessWidget {
         "navigation_path": HealthVideoScreen.id
       },
       {
+        "icon_path": AssetConstants.buyMedicine,
+        "title": "Common Diseases",
+        "navigation_path": DiseasesScreen.id
+      },
+      {
         "icon_path": AssetConstants.diet,
         "title": "Balanced Diet",
         "navigation_path": BalancedDiet.id
@@ -125,7 +131,7 @@ class HomeScreen extends StatelessWidget {
       mainAxisSpacing: 20,
       physics: const NeverScrollableScrollPhysics(),
       children: List.generate(
-        5,
+        tiles.length,
         (index) => buildHomeTile(
           iconPath: tiles[index]['icon_path']!,
           title: tiles[index]['title']!,
