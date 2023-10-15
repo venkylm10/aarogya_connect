@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
         margin: margin,
         decoration: BoxDecoration(
           color: backgroundColor ?? MyColors.orangeColor,
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Center(
           child: Row(
@@ -42,7 +42,7 @@ class CustomButton extends StatelessWidget {
                 child: Text(
                   label,
                   style: MyStyles.subHeadingStyle.copyWith(
-                    fontSize: 15,
+                    fontSize: 18,
                     color: labelColor ?? MyColors.whiteColor,
                   ),
                 ),

@@ -2,12 +2,13 @@ import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
 import 'package:aarogya_connect/main.dart';
-import 'package:aarogya_connect/pages/complaints.dart';
-import 'package:aarogya_connect/pages/donate.dart';
+import 'package:aarogya_connect/pages/buy_medicine/buy_medicine.dart';
+import 'package:aarogya_connect/pages/diseases.dart';
+import 'package:aarogya_connect/pages/health_video/health_video.dart';
 import 'package:aarogya_connect/pages/home/drawer.dart';
-import 'package:aarogya_connect/pages/survey.dart';
-import 'package:aarogya_connect/services/Map/BalancedDiet.dart';
-import 'package:aarogya_connect/services/Map/MapScreen.dart';
+import 'package:aarogya_connect/pages/women_health/women_health.dart';
+import 'package:aarogya_connect/services/map/balanced_diet.dart';
+import 'package:aarogya_connect/services/map/map_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -97,24 +98,29 @@ class HomeScreen extends StatelessWidget {
         "navigation_path": HospitalsScreen.id
       },
       {
+        "icon_path": AssetConstants.video,
+        "title": "Health Video",
+        "navigation_path": HealthVideoScreen.id
+      },
+      {
+        "icon_path": AssetConstants.buyMedicine,
+        "title": "Common Diseases",
+        "navigation_path": DiseasesScreen.id
+      },
+      {
         "icon_path": AssetConstants.diet,
-        "title": "balanced Diet",
+        "title": "Balanced Diet",
         "navigation_path": BalancedDiet.id
       },
       {
-        "icon_path": AssetConstants.survey,
-        "title": "Quick Survey",
-        "navigation_path": SurveyScreen.id
+        "icon_path": AssetConstants.womenHealth,
+        "title": "Women Health",
+        "navigation_path": WomenHealthScreen.id
       },
       {
-        "icon_path": AssetConstants.donate,
-        "title": "Donate NGOs",
-        "navigation_path": DonateScreen.id
-      },
-      {
-        "icon_path": AssetConstants.complaints,
-        "title": "Complaints",
-        "navigation_path": ComplaintScreen.id
+        "icon_path": AssetConstants.buyMedicine,
+        "title": "Buy Medicine",
+        "navigation_path": BuyMedicineScreen.id
       },
     ];
     return GridView.count(
@@ -123,8 +129,9 @@ class HomeScreen extends StatelessWidget {
       shrinkWrap: true,
       crossAxisSpacing: 20,
       mainAxisSpacing: 20,
+      physics: const NeverScrollableScrollPhysics(),
       children: List.generate(
-        5,
+        tiles.length,
         (index) => buildHomeTile(
           iconPath: tiles[index]['icon_path']!,
           title: tiles[index]['title']!,

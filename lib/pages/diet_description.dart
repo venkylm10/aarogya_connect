@@ -1,14 +1,14 @@
-import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
+import 'package:aarogya_connect/utils/appbar.dart';
+import 'package:aarogya_connect/utils/background_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DietDescription extends StatefulWidget {
-  final int data;
-
-  const DietDescription({required this.data, super.key});
+  static const id = "home/balanced_diet/diet_description";
+  const DietDescription({super.key});
 
   @override
   State<DietDescription> createState() => _DietDescriptionState();
@@ -39,13 +39,13 @@ class _DietDescriptionState extends State<DietDescription> {
 
   MarkdownStyleSheet customStyleSheet = MarkdownStyleSheet(
     a: TextStyle(color: Colors.blue), // Customize link styling
-    p: TextStyle(fontSize: 14), // Adjust paragraph text size
+    p: TextStyle(fontSize: 16), // Adjust paragraph text size
     strong:
         TextStyle(fontWeight: FontWeight.bold), // Customize bold text styling
     textScaleFactor: 1.25, // Adjust text scale factor
     blockSpacing: 10, // Adjust block spacing
     h1: GoogleFonts.poppins(
-      fontSize: 18,
+      fontSize: 24,
       fontWeight: FontWeight.bold,
     ),
     // Add other text styling as needed
@@ -54,68 +54,20 @@ class _DietDescriptionState extends State<DietDescription> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 45,
-        titleSpacing: 0,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            )),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              AssetConstants.diet,
-              fit: BoxFit.contain,
-              height: 25,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            const Text(
-              "Balanced Diet",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        elevation: 0,
-        backgroundColor: MyColors.greenColor,
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            Container(
-              height: double.maxFinite,
-              padding: const EdgeInsets.all(10).copyWith(top: 0),
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [MyColors.greenColor, MyColors.whiteColor],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter)),
-              child: markdownContent != null
-                  ? Expanded(
-                      child: Markdown(
-                        data: markdownContent!,
-                        styleSheet: customStyleSheet,
-                      ),
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-            ),
-          ],
-        ),
-      ),
-    );
+        appBar: buildAppbar(AssetConstants.diet, "Balanced Diet"),
+        body: Container(
+          decoration: bgGradient,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: markdownContent != null
+              ? Expanded(
+                  child: Markdown(
+                    data: markdownContent!,
+                    styleSheet: customStyleSheet,
+                  ),
+                )
+              : const Center(
+                  child: CircularProgressIndicator(),
+                ),
+        ));
   }
 }

@@ -37,21 +37,22 @@ class SurveyScreen extends StatelessWidget {
         ),
         leading: backButton,
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Container(
-          padding: const EdgeInsets.only(bottom: 50),
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                MyColors.greenColor,
-                MyColors.whiteColor,
-              ],
-            ),
+      body: Container(
+        padding: const EdgeInsets.only(bottom: 50),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              MyColors.greenColor,
+              MyColors.whiteColor,
+            ],
           ),
-          child: const Column(
+        ),
+        child: const SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          physics: BouncingScrollPhysics(),
+          child: Column(
             children: [
               SurveyTile(),
               SurveyTile(),

@@ -80,7 +80,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 ),
               )
             : null,
-        hintText: widget.hintText,
+        hintText: widget.hintText ?? "",
         hintStyle: MyStyles.bodyTextStyle.copyWith(color: MyColors.lightColor),
         labelStyle: MyStyles.bodyTextStyle.copyWith(color: MyColors.lightColor),
         border: widget.border ??

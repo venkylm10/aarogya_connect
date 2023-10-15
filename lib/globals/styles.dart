@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyStyles {
   static var headingStyle = GoogleFonts.poppins(
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: FontWeight.bold,
     color: MyColors.blackColor,
   );

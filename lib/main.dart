@@ -1,5 +1,5 @@
 import 'package:aarogya_connect/globals/colors.dart';
-import 'package:aarogya_connect/pages/login.dart';
+import 'package:aarogya_connect/pages/welcome.dart';
 import 'package:aarogya_connect/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Aarogya Connect',
       theme: ThemeData.light(),
-      initialRoute: LoginScreen.id,
+      initialRoute: WelcomeScreen.id,
       routes: routes,
     );
   }

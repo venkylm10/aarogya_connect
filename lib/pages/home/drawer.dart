@@ -2,12 +2,12 @@ import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
 import 'package:aarogya_connect/main.dart';
-import 'package:aarogya_connect/pages/buy_medicine/buy_medicine.dart';
+import 'package:aarogya_connect/pages/complaints.dart';
 import 'package:aarogya_connect/pages/contact_us/contact_us.dart';
-import 'package:aarogya_connect/pages/health_video/health_video.dart';
+import 'package:aarogya_connect/pages/donate.dart';
 import 'package:aarogya_connect/pages/login.dart';
+import 'package:aarogya_connect/pages/survey.dart';
 import 'package:aarogya_connect/pages/volunteering/volunteer_screen.dart';
-import 'package:aarogya_connect/pages/women_health/women_health.dart';
 import 'package:flutter/material.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -15,14 +15,9 @@ class HomeDrawer extends StatelessWidget {
 
   List<Map<String, String>> tiles = [
     {
-      'icon_path': AssetConstants.video,
-      'title': "Health Video",
-      "navigate_path": HealthVideoScreen.id
-    },
-    {
-      'icon_path': AssetConstants.womenHealth,
-      'title': "Women Health",
-      "navigate_path": WomenHealthScreen.id
+      'icon_path': AssetConstants.survey,
+      'title': "Quick Survey",
+      "navigate_path": SurveyScreen.id
     },
     {
       'icon_path': AssetConstants.volunteer,
@@ -30,9 +25,14 @@ class HomeDrawer extends StatelessWidget {
       "navigate_path": VolunteerScreen.id
     },
     {
-      'icon_path': AssetConstants.buyMedicine,
-      'title': "Buy Medicine",
-      "navigate_path": BuyMedicineScreen.id
+      'icon_path': AssetConstants.donate,
+      'title': "Donate Us",
+      "navigate_path": DonateScreen.id
+    },
+    {
+      'icon_path': AssetConstants.complaints,
+      'title': "Complaints",
+      "navigate_path": ComplaintScreen.id
     },
     {
       'icon_path': AssetConstants.contactUs,
@@ -129,9 +129,13 @@ class HomeDrawer extends StatelessWidget {
 
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
+      barrierColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return ContactUsScreen();
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: ContactUsScreen(),
+        );
       },
     );
   }
@@ -145,6 +149,7 @@ class HomeDrawer extends StatelessWidget {
       onTap: () {
         if (navigatePath == '') {
           _showBottomSheet(context);
+          return;
         }
         if (navigatePath == LoginScreen.id) {
           navigatorKey.currentState!.popUntil((route) => route.isFirst);
@@ -165,7 +170,7 @@ class HomeDrawer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(width: 20),
-            Image.asset(iconPath, height: 40),
+            Image.asset(iconPath, height: 30),
             const SizedBox(width: 10),
             Text(
               title,

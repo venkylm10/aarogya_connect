@@ -17,10 +17,10 @@ class HospitalsScreen extends StatefulWidget {
 
 class _HospitalsScreenState extends State<HospitalsScreen> {
   late Future<Position> userPosition;
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
 
-  List<Marker> _marker = [];
-  List<Marker> _list = [
+  final List<Marker> _marker = [];
+  final List<Marker> _list = [
     const Marker(
         markerId: MarkerId('1'),
         position: LatLng(26.144518, 91.736237),
@@ -31,7 +31,7 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
     await Geolocator.requestPermission()
         .then((value) {})
         .onError((error, stackTrace) {
-      print("error" + error.toString());
+      print("error$error");
     });
 
     return await Geolocator.getCurrentPosition();
@@ -46,11 +46,11 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
   List<dynamic> hospital = [];
 
   Future<void> fetchNearbyHospitals() async {
-    final apiKey = 'AIzaSyCQwySKvMSJPfdTtzISoS2qCRLEEvA5lUM';
+    const apiKey = 'AIzaSyCQwySKvMSJPfdTtzISoS2qCRLEEvA5lUM';
     final userLocation = await getUserCurrentLocation();
     final latitude = userLocation.latitude;
     final longitude = userLocation.longitude;
-    final radius = 10000;
+    const radius = 10000;
 
     final response = await http.get(Uri.parse(
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$latitude,$longitude&radius=$radius&type=hospital&key=$apiKey'));
@@ -157,9 +157,10 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                         final position = snapshot.data;
                         return GoogleMap(
                           initialCameraPosition: CameraPosition(
-                              target: LatLng(
-                                  position!.latitude, position.longitude),
-                              zoom: 12),
+                            target:
+                                LatLng(position!.latitude, position.longitude),
+                            zoom: 14,
+                          ),
                           markers: Set<Marker>.of(_marker),
                           mapType: MapType.normal,
                           myLocationEnabled: true,
@@ -172,7 +173,6 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                     }),
               ),
             ),
-            
             Expanded(
               child: Container(
                 color: Colors.transparent,
