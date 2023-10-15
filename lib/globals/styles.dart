@@ -19,7 +19,7 @@ class MyStyles {
     color: MyColors.blackColor,
   );
   static var lightTextStyle = GoogleFonts.poppins(
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: FontWeight.normal,
     color: MyColors.lightColor,
   );

@@ -19,4 +19,10 @@ class AssetConstants {
   static const old = 'assets/images/icons/old.png';
   static const gPay = 'assets/images/icons/gPay.png';
   static const paypal = 'assets/images/icons/paypal.png';
+  static const ytThumbnail = 'assets/images/yt_thumbnail.png';
+  static const apollo = 'assets/images/icons/pharma/apollo.png';
+  static const medlife = 'assets/images/icons/pharma/medlife.png';
+  static const netmeds = 'assets/images/icons/pharma/netmeds.png';
+  static const pharmEasy = 'assets/images/icons/pharma/pharm_easy.png';
+  static const tata1mg = 'assets/images/icons/pharma/tata_1mg.png';
 }

@@ -7,12 +7,18 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final EdgeInsetsGeometry? margin;
   final VoidCallback? onTap;
+  final Color? backgroundColor;
+  final Color? labelColor;
+  final Widget? leadingIcon;
   const CustomButton({
     super.key,
     required this.label,
     this.height,
     this.margin,
     this.onTap,
+    this.backgroundColor,
+    this.labelColor,
+    this.leadingIcon,
   });
 
   @override
@@ -23,16 +29,25 @@ class CustomButton extends StatelessWidget {
         height: height ?? 60,
         margin: margin,
         decoration: BoxDecoration(
-          color: MyColors.orangeColor,
+          color: backgroundColor ?? MyColors.orangeColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
-          child: Text(
-            label,
-            style: MyStyles.subHeadingStyle.copyWith(
-              fontSize: 15,
-              color: MyColors.whiteColor,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              leadingIcon ?? const SizedBox(),
+              Transform.translate(
+                offset: const Offset(-5, 0),
+                child: Text(
+                  label,
+                  style: MyStyles.subHeadingStyle.copyWith(
+                    fontSize: 15,
+                    color: labelColor ?? MyColors.whiteColor,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

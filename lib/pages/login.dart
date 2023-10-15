@@ -1,6 +1,10 @@
-import 'package:aarogya_connect/services/Map/BalancedDiet.dart';
-import 'package:aarogya_connect/services/Map/MapScreen.dart';
+import 'package:aarogya_connect/globals/colors.dart';
+import 'package:aarogya_connect/globals/styles.dart';
+import 'package:aarogya_connect/main.dart';
 import 'package:aarogya_connect/pages/home/home.dart';
+import 'package:aarogya_connect/utils/snackbar.dart';
+import 'package:aarogya_connect/widgets/global/custom_button.dart';
+import 'package:aarogya_connect/widgets/global/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +18,31 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final phoneNumberController = TextEditingController();
+  final otpController = TextEditingController();
+  String label = 'Continue';
+  bool showOTPField = false;
+
+  void login() {
+    navigatorKey.currentState!.pushNamed(HomeScreen.id);
+    return;
+    // final mobileCheck = validate(phoneNumberController.text.trim(), 10);
+    // if (mobileCheck) {
+    //   setState(() {
+    //     showOTPField = true;
+    //     label = "Login";
+    //   });
+    // }
+  }
+
+  bool validate(String str, int len) {
+    if (str.length != len) {
+      showSnackBar(context, "! Please correct values");
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,61 +100,74 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               child: Row(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: Text(
                       "+91",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                      style: MyStyles.subHeadingStyle.copyWith(fontSize: 14),
                     ),
                   ),
                   const SizedBox(
                     width: 5,
                   ),
                   Container(
-                    margin: const EdgeInsets.all(5),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     color: Colors.grey,
                     width: 1.5,
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
                   Expanded(
-                    child: TextField(
-                      decoration: const InputDecoration.collapsed(
-                          hintText: '00000 00000'),
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
+                    child: CustomTextField(
+                      controller: phoneNumberController,
+                      hintText: "9999999999",
+                      fillColor: Colors.transparent,
+                      border: InputBorder.none,
                     ),
                   )
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
-              },
-              child: Container(
-                width: 500,
+            const SizedBox(height: 20),
+            if (showOTPField)
+              Container(
                 height: 60,
-                decoration: BoxDecoration(
-                  color: Colors.greenAccent[400],
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Colors.white,
                 ),
-                child: const Center(
-                    child: Text(
-                  "Login or Sign Up",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                )),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        "OTP",
+                        style: MyStyles.subHeadingStyle.copyWith(fontSize: 14),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 10),
+                      color: Colors.grey,
+                      width: 1.5,
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        controller: otpController,
+                        hintText: "000000",
+                        fillColor: Colors.transparent,
+                        border: InputBorder.none,
+                      ),
+                    )
+                  ],
+                ),
               ),
+            CustomButton(
+              label: label,
+              onTap: () => login(),
             )
           ],
         ),
