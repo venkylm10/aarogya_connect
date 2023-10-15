@@ -1,5 +1,6 @@
 import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
+import 'package:aarogya_connect/globals/styles.dart';
 import 'package:flutter/material.dart';
 
 class DonateScreen extends StatelessWidget {
@@ -9,9 +10,9 @@ class DonateScreen extends StatelessWidget {
   Widget PaymentMethod(String image, String title) {
     return Container(
       height: 60,
-      padding: EdgeInsets.only(right: 60, left: 50),
-      margin: EdgeInsets.only(top: 20, bottom: 20),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.only(right: 60, left: 50),
+      margin: const EdgeInsets.symmetric(vertical: 15),
+      decoration: const BoxDecoration(
         color: MyColors.homeTileColor,
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
@@ -25,7 +26,7 @@ class DonateScreen extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(fontSize: 16),
+            style: MyStyles.bodyTextStyle.copyWith(fontWeight: FontWeight.w600),
           ),
         ],
       ),
@@ -42,7 +43,7 @@ class DonateScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             )),
@@ -54,10 +55,10 @@ class DonateScreen extends StatelessWidget {
               fit: BoxFit.contain,
               height: 25,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
-            Text(
+            const Text(
               "Donate Us",
               style: TextStyle(
                 color: Colors.black,
@@ -85,9 +86,7 @@ class DonateScreen extends StatelessWidget {
         ),
         child: Column(children: [
           GestureDetector(
-            onTap: () {
-             
-            },
+            onTap: () {},
             child: PaymentMethod(AssetConstants.gPay, "Google Pay"),
           ),
           GestureDetector(

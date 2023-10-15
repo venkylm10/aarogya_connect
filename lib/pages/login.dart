@@ -7,7 +7,6 @@ import 'package:aarogya_connect/widgets/global/custom_button.dart';
 import 'package:aarogya_connect/widgets/global/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:aarogya_connect/globals/constants.dart';
-import 'package:flutter/services.dart';
 
 class LoginScreen extends StatefulWidget {
   static const id = "/login";
@@ -18,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final nameController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final otpController = TextEditingController();
   String label = 'Continue';
@@ -46,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: const EdgeInsets.all(40),
         decoration: const BoxDecoration(
@@ -56,6 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
               end: Alignment.bottomCenter,
             )),
         child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               margin: const EdgeInsets.only(top: 40),
@@ -76,27 +79,46 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ]),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Row(
-                children: [
-                  Text(
-                    "Mobile Number/",
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                  Expanded(child: SizedBox()),
-                ],
+            const SizedBox(height: 10),
+            const Row(
+              children: [
+                Text(
+                  "Name / नाम",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                Expanded(child: SizedBox()),
+              ],
+            ),
+            const SizedBox(height: 5),
+            CustomTextField(
+              controller: nameController,
+              hintText: " Name ",
+              fillColor: MyColors.whiteColor,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(
+                  color: MyColors.whiteColor,
+                ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 10),
+            const SizedBox(height: 20),
+            const Row(
+              children: [
+                Text(
+                  "Mobile Number / मोबाइल नंबर",
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+                Expanded(child: SizedBox()),
+              ],
             ),
+            const SizedBox(height: 5),
             Container(
               height: 60,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.white,
+                color: MyColors.whiteColor,
               ),
               child: Row(
                 children: [
@@ -119,9 +141,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     child: CustomTextField(
                       controller: phoneNumberController,
-                      hintText: "9999999999",
+                      hintText: "Enter mobile number",
                       fillColor: Colors.transparent,
                       border: InputBorder.none,
+                      keyboardType: TextInputType.phone,
                     ),
                   )
                 ],
@@ -165,10 +188,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
+            const SizedBox(height: 10),
             CustomButton(
               label: label,
               onTap: () => login(),
-            )
+            ),
           ],
         ),
       ),

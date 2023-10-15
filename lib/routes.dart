@@ -7,9 +7,11 @@ import 'package:aarogya_connect/pages/home/home.dart';
 import 'package:aarogya_connect/pages/login.dart';
 import 'package:aarogya_connect/pages/survey.dart';
 import 'package:aarogya_connect/pages/volunteering/volunteer_screen.dart';
+import 'package:aarogya_connect/pages/welcome.dart';
 import 'package:aarogya_connect/pages/women_health/women_health.dart';
-import 'package:aarogya_connect/services/Map/BalancedDiet.dart';
-import 'package:aarogya_connect/services/Map/MapScreen.dart';
+import 'package:aarogya_connect/pages/diet_description.dart';
+import 'package:aarogya_connect/services/map/balanced_diet.dart';
+import 'package:aarogya_connect/services/map/map_screen.dart';
 
 final routes = {
   LoginScreen.id: (context) => const LoginScreen(),
@@ -24,4 +26,6 @@ final routes = {
   VolunteerScreen.id: (context) => const VolunteerScreen(),
   BuyMedicineScreen.id: (context) => BuyMedicineScreen(),
   ContactUsScreen.id: (context) =>  ContactUsScreen(),
+  DietDescription.id: (context) => const DietDescription(),
+  WelcomeScreen.id: (context) => const WelcomeScreen(),
 };

@@ -1,6 +1,5 @@
 import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/utils/appbar.dart';
-import 'package:aarogya_connect/utils/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
