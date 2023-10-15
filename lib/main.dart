@@ -3,16 +3,18 @@ import 'package:aarogya_connect/pages/login.dart';
 import 'package:aarogya_connect/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 var navigatorKey = GlobalKey<NavigatorState>();
 
-void main() {
+void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     systemNavigationBarColor: MyColors.whiteColor,
   ));
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

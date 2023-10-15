@@ -23,5 +23,5 @@ final routes = {
   WomenHealthScreen.id: (context) => const WomenHealthScreen(),
   VolunteerScreen.id: (context) => const VolunteerScreen(),
   BuyMedicineScreen.id: (context) => const BuyMedicineScreen(),
-  ContactUsScreen.id: (context) => const ContactUsScreen(),
+  ContactUsScreen.id: (context) =>  ContactUsScreen(),
 };

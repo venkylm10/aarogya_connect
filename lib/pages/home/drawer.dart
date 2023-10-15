@@ -37,7 +37,7 @@ class HomeDrawer extends StatelessWidget {
     {
       'icon_path': AssetConstants.contactUs,
       'title': "Contact Us",
-      "navigate_path": ContactUsScreen.id
+      "navigate_path": '',
     },
     {
       'icon_path': AssetConstants.logout,
@@ -81,6 +81,7 @@ class HomeDrawer extends StatelessWidget {
                     .map(
                       (map) => buildDrawerTile(
                           iconPath: map['icon_path']!,
+                          context: context,
                           title: map['title']!,
                           navigatePath: map['navigate_path']!),
                     )
@@ -126,12 +127,25 @@ class HomeDrawer extends StatelessWidget {
     );
   }
 
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ContactUsScreen();
+      },
+    );
+  }
+
   Widget buildDrawerTile(
       {required String iconPath,
       required String title,
+      required BuildContext context,
       required String navigatePath}) {
     return GestureDetector(
       onTap: () {
+        if (navigatePath == '') {
+          _showBottomSheet(context);
+        }
         if (navigatePath == LoginScreen.id) {
           navigatorKey.currentState!.popUntil((route) => route.isFirst);
           return;

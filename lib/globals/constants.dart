@@ -25,4 +25,7 @@ class AssetConstants {
   static const netmeds = 'assets/images/icons/pharma/netmeds.png';
   static const pharmEasy = 'assets/images/icons/pharma/pharm_easy.png';
   static const tata1mg = 'assets/images/icons/pharma/tata_1mg.png';
+  static const phone = 'assets/images/icons/phone-call 1.png';
+  static const email = 'assets/images/icons/email 1.png';
+  static const postBox = 'assets/images/icons/postbox 1.png';
 }
