@@ -10,6 +10,9 @@ class CustomTextField extends StatefulWidget {
   final int? maxLines;
   final TextInputType? keyboardType;
   final bool? isNecessary;
+  final Function(String?)? onChange;
+  final InputBorder? border;
+  final Color? fillColor;
   const CustomTextField({
     super.key,
     required this.controller,
@@ -18,7 +21,10 @@ class CustomTextField extends StatefulWidget {
     this.maxLength,
     this.maxLines,
     this.keyboardType,
+    this.onChange,
     this.isNecessary = false,
+    this.border,
+    this.fillColor,
   });
 
   @override
@@ -43,8 +49,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       cursorColor: MyColors.greenColor,
       maxLines: widget.maxLines,
       maxLength: widget.maxLength,
+      onChanged: widget.onChange,
       decoration: InputDecoration(
-        fillColor: MyColors.homeTileColor,
+        fillColor: widget.fillColor ?? MyColors.homeTileColor,
         filled: true,
         counter: widget.maxLength != null
             ? counterBuilder(
@@ -60,44 +67,50 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   children: [
                     TextSpan(
                       text: " ${widget.labelText} ",
-                      style: MyStyles.bodyTextStyle,
+                      style: MyStyles.bodyTextStyle
+                          .copyWith(color: MyColors.lightColor),
                     ),
                     if (widget.isNecessary!)
                       TextSpan(
                         text: ' * ',
-                        style: MyStyles.bodyTextStyle,
+                        style: MyStyles.bodyTextStyle
+                            .copyWith(color: MyColors.lightColor),
                       ),
                   ],
                 ),
               )
             : null,
         hintText: widget.hintText,
-        hintStyle: MyStyles.bodyTextStyle,
-        labelStyle: MyStyles.bodyTextStyle,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(
-            color: MyColors.orangeColor,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(
-            color: MyColors.orangeColor,
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(
-            color: MyColors.orangeColor,
-          ),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(
-            color: MyColors.orangeColor,
-          ),
-        ),
+        hintStyle: MyStyles.bodyTextStyle.copyWith(color: MyColors.lightColor),
+        labelStyle: MyStyles.bodyTextStyle.copyWith(color: MyColors.lightColor),
+        border: widget.border ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                color: MyColors.orangeColor,
+              ),
+            ),
+        enabledBorder: widget.border ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                color: MyColors.orangeColor,
+              ),
+            ),
+        focusedBorder: widget.border ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                color: MyColors.orangeColor,
+              ),
+            ),
+        errorBorder: widget.border ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                color: MyColors.orangeColor,
+              ),
+            ),
       ),
       keyboardType: widget.keyboardType,
     );

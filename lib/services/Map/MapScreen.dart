@@ -171,35 +171,6 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                       }
                     }),
               ),
-<<<<<<< HEAD
-              child: FutureBuilder<Position>(
-                  future: userPosition,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else if (snapshot.data == null) {
-                      return Text('User position is not available');
-                    } else {
-                      final position = snapshot.data;
-                      return GoogleMap(
-                        initialCameraPosition: CameraPosition(
-                            target:
-                                LatLng(position!.latitude, position.longitude),
-                            zoom: 18),
-                        markers: Set<Marker>.of(_marker),
-                        mapType: MapType.normal,
-                        myLocationEnabled: true,
-                        compassEnabled: true,
-                        onMapCreated: (GoogleMapController controller) {
-                          _controller.complete(controller);
-                        },
-                      );
-                    }
-                  }),
-=======
->>>>>>> dummy
             ),
             
             Expanded(
