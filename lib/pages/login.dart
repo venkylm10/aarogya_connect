@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        padding: const EdgeInsets.all(40),
+        padding: const EdgeInsets.all(30),
         decoration: const BoxDecoration(
             color: Colors.greenAccent,
             gradient: LinearGradient(

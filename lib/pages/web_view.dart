@@ -43,20 +43,23 @@ class _MyWebViewState extends State<MyWebView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppbar("", widget.title),
-      body: Stack(
-        children: [
-          WebViewWidget(
-            controller: controller,
-          ),
-          if (isLoading)
-            const Center(
-              child: CircularProgressIndicator(
-                color: MyColors.greenColor,
-              ),
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        appBar: buildAppbar("", widget.title),
+        body: Stack(
+          children: [
+            WebViewWidget(
+              controller: controller,
             ),
-        ],
+            if (isLoading)
+              const Center(
+                child: CircularProgressIndicator(
+                  color: MyColors.greenColor,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

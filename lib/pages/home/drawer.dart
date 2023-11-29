@@ -129,13 +129,9 @@ class HomeDrawer extends StatelessWidget {
 
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
-      barrierColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: ContactUsScreen(),
-        );
+        return ContactUsScreen();
       },
     );
   }
@@ -152,7 +148,12 @@ class HomeDrawer extends StatelessWidget {
           return;
         }
         if (navigatePath == LoginScreen.id) {
-          navigatorKey.currentState!.popUntil((route) => route.isFirst);
+          navigatorKey.currentState!.popUntil((route) {
+            if (route is ModalRoute && route.settings.name == LoginScreen.id) {
+              return true;
+            }
+            return false;
+          });
           return;
         }
         navigatorKey.currentState!.pushNamed(navigatePath);

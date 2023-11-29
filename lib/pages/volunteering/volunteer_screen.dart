@@ -1,6 +1,7 @@
 import 'package:aarogya_connect/globals/colors.dart';
 import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
+import 'package:aarogya_connect/utils/appbar.dart';
 import 'package:aarogya_connect/utils/back_button.dart';
 import 'package:aarogya_connect/utils/loader.dart';
 import 'package:aarogya_connect/utils/snackbar.dart';
@@ -98,22 +99,7 @@ class _ComplaintScreenState extends State<VolunteerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.whiteColor,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: MyColors.greenColor,
-        titleSpacing: 0,
-        title: Row(
-          children: [
-            Image.asset(AssetConstants.volunteer, height: 30),
-            const SizedBox(width: 10),
-            Text(
-              "Volunteer",
-              style: MyStyles.subHeadingStyle,
-            ),
-          ],
-        ),
-        leading: backButton,
-      ),
+      appBar: buildAppbar(AssetConstants.volunteer, "Volunteering"),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

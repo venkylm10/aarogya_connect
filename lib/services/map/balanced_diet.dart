@@ -3,6 +3,7 @@ import 'package:aarogya_connect/globals/constants.dart';
 import 'package:aarogya_connect/globals/styles.dart';
 import 'package:aarogya_connect/main.dart';
 import 'package:aarogya_connect/pages/diet_description.dart';
+import 'package:aarogya_connect/utils/appbar.dart';
 import 'package:flutter/material.dart';
 
 class BalancedDiet extends StatelessWidget {
@@ -43,42 +44,7 @@ class BalancedDiet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 45,
-        titleSpacing: 0,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            )),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              AssetConstants.diet,
-              fit: BoxFit.contain,
-              height: 25,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            const Text(
-              "Balanced Diet",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        elevation: 0,
-        backgroundColor: MyColors.greenColor,
-      ),
+      appBar: buildAppbar(AssetConstants.diet, "Balanced Diet"),
       body: Container(
         padding: const EdgeInsets.all(20).copyWith(bottom: 0),
         decoration: const BoxDecoration(

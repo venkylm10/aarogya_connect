@@ -14,6 +14,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -32,7 +33,6 @@ class WelcomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const SizedBox(height: 160),
                 Text(
                   "Welcome To",
                   style: MyStyles.headingStyle.copyWith(fontSize: 28),
